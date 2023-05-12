@@ -29,11 +29,11 @@ opt.undofile = true -- 把撤销信息写入一个文件里
 opt.updatetime = 300 --  刷新交换文件所需的毫秒数(默认4000ms)
 opt.writebackup = false -- 如果一个文件正在被另一个程序编辑(或在另一个程序编辑时写入文件), 则不允许编辑
 opt.expandtab = true -- 将tab转换为空格
-opt.shiftwidth = 2 -- 1 tab = 2 空格
-opt.tabstop = 2 -- 1 tab = 2 空格
+opt.shiftwidth = 4 -- 1 tab = 2 空格
+opt.tabstop = 4 -- 1 tab = 2 空格
 opt.cursorline = true -- 高亮当前行
 opt.number = true -- 显示行号
-opt.relativenumber = true -- 使用相对行号
+opt.relativenumber = false -- 使用相对行号
 opt.numberwidth = 2 -- 行号宽度: 2
 opt.signcolumn = 'yes' -- 始终显示符号列，否则每次都会移动文本
 opt.wrap = false -- 长行回绕并在下一行继续
@@ -42,19 +42,21 @@ opt.sidescrolloff = 8
 
 opt.laststatus = 3 -- global statusline
 opt.statusline = "%!v:lua.require('ui.statusline').run()"
-
 -- 不可见的字符显示点
 opt.list = true
 opt.listchars = 'space:⋅'
 
 opt.shortmess:append('c')
 
-vim.cmd('set whichwrap+=<,>,[,],h,l')
-vim.cmd([[set iskeyword+=-]])
-vim.cmd([[let g:perl_host_prog = '/usr/bin/perl']])
-
 vim.schedule(function()
   vim.opt.shadafile = vim.fn.expand('$HOME') .. '/.local/share/nvim/shada/main.shada'
   vim.cmd([[ silent! rsh ]])
-  --  vim.cmd('colorscheme default')
+  -- vim.cmd('colorscheme default')
+  -- vim.cmd('set background &')
+  vim.cmd('hi Normal guifg=#44cc44 guibg=NONE ctermbg=none')
+  vim.cmd(':set listchars=tab:>-,trail:-')
 end)
+
+vim.cmd('set whichwrap+=<,>,[,],h,l')
+vim.cmd([[set iskeyword+=-]])
+vim.cmd([[let g:perl_host_prog = '/usr/bin/perl']])

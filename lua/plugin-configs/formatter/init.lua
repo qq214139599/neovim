@@ -24,7 +24,7 @@ if present then
   local phppretty = function()
     return {
       exe = '/usr/local/phpfmt/fmt.phar',
-      args = { '--psr2', '-o=-', vim.fn.shellescape(vim.api.nvim_buf_get_name(0)) },
+      args = { '--psr2', '--indent_with_space=4', '-o=-', vim.fn.shellescape(vim.api.nvim_buf_get_name(0)) },
       stdin = true,
     }
   end

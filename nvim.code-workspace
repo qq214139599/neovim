@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../.local/share/nvim"
+		},
+		{
+			"path": "../../../../usr/local/nvim"
+		}
+	],
+	"settings": {}
+}

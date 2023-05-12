@@ -1,10 +1,10 @@
 local config = require('core.plugin.config')
 
 require('lazy').setup({
-  { 'nvim-lua/plenary.nvim', lazy = true },
-  { 'b0o/schemastore.nvim', lazy = true },
+  { 'nvim-lua/plenary.nvim',          lazy = true },
+  { 'b0o/schemastore.nvim',           lazy = true },
   { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' },
-  { 'nvim-tree/nvim-web-devicons', lazy = true },
+  { 'nvim-tree/nvim-web-devicons',    lazy = true },
 
   ------------------------------ UI ----------------------------------
   {
@@ -183,22 +183,21 @@ require('lazy').setup({
     'zbirenbaum/copilot.lua',
     cmd = 'Copilot',
     event = 'VimEnter',
-    config = function()
-      vim.defer_fn(function()
-        require('copilot').setup()
-      end, 100)
-    end,
-    opts = {
-      suggestion = { enabled = false },
-      panel = { enabled = false },
-    },
+    config = function ()
+      local conf = require('plugin-configs.copilot')
+      require('copilot').setup(conf)
+    end
   },
-  
+
   {
     'zbirenbaum/copilot-cmp',
-    dependencies = 'zbirenbaum/copilot.lua',
-    config = function()
-      require('copilot_cmp').setup()
+    dependencies = 'copilot.lua',
+    opts = {},
+    config = function(_, opts)
+      local copilot_cmp = require('copilot_cmp')
+      copilot_cmp.setup(opts)
+      -- attach cmp source whenever copilot attaches
+      -- fixes lazy-loading issues with the copilot cmp source
     end,
   },
 
