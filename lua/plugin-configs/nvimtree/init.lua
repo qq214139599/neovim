@@ -26,10 +26,27 @@ if present then
     lib.refresh_tree()
   end
 
+  local function on_attach(bufnr)
+    local api = require('nvim-tree.api')
+    local function opts(desc)
+      return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    end
+
+    api.config.mappings.default_on_attach(bufnr)
+    vim.keymap.set('n', '<C-t>', api.node.open.tab, opts('Open: New Tab'))
+    vim.keymap.set('n', '<C-v>', api.node.open.vertical, opts('Open: Vertical Split'))
+    vim.keymap.set('n', '<C-x>', api.node.open.horizontal, opts('Open: Horizontal Split'))
+    vim.keymap.set('n', '<BS>', api.node.navigate.parent_close, opts('Close Directory'))
+    vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
+    vim.keymap.set('n', '<Tab>', api.node.open.preview, opts('Open Preview'))
+  end
+
+
   nvimtree.setup({
+    on_attach = on_attach,
     disable_netrw = true,
     hijack_netrw = true,
-    open_on_tab = false,
+    open_on_tab = true,
     hijack_cursor = false,
     update_cwd = true,
     update_focused_file = {
@@ -43,16 +60,16 @@ if present then
       adaptive_size = true,
       number = false,
       relativenumber = false,
-      mappings = {
-        custom_only = false,
-        list = {
-          { key = { 'l', '<CR>', 'o' }, action = 'tabnew' },
-          { key = { 'e' }, action = 'edit' },
-          { key = 'h', action = 'close_node' },
-          { key = 'v', action = 'vsplit' },
-          { key = 'ga', action = 'git_add', action_cb = git_add },
-        },
-      },
+      -- mappings = {
+      --   custom_only = false,
+      --   list = {
+      --     { key = { 'l', '<CR>', 'o' }, action = 'tabnew' },
+      --     { key = { 'e' }, action = 'edit' },
+      --     { key = 'h', action = 'close_node' },
+      --     { key = 'v', action = 'vsplit' },
+      --     { key = 'ga', action = 'git_add', action_cb = git_add },
+      --   },
+      -- },
     },
     actions = {
       open_file = {
