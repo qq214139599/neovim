@@ -1,6 +1,14 @@
 #常见问题
-[d 上一个LSP 问题
+[d 上一个 LSP 问题
 ]d 下一个 LSP 问题
+
+# 依赖安装
+
+pip install compiledb
+
+# c 依赖文件
+
+compiledb -nf make
 
 # SkCode
 
