@@ -4,7 +4,12 @@
 
 # 依赖安装
 
-pip install compiledb
+pip install compiledb #c 依赖文件
+sudo yum install ripgrep #全文搜索支持
+git clone https://github.com/kodeclan/phpfmt.git /usr/local/phpfmt
+git clone https://github.com/phpactor/phpactor.git /usr/local/phpactor
+git clone https://github.com/LuaLS/lua-language-server /usr/local/lua-language-server
+git clone https://github.com/neovim/neovim.git /usr/local/neovim
 
 # c 依赖文件
 
