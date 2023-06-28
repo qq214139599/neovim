@@ -51,10 +51,24 @@ opt.shortmess:append('c')
 vim.schedule(function()
   vim.opt.shadafile = vim.fn.expand('$HOME') .. '/.local/share/nvim/shada/main.shada'
   vim.cmd([[ silent! rsh ]])
-  -- vim.cmd('colorscheme default')
-  -- vim.cmd('set background &')
+  vim.cmd('colorscheme slate')
+  vim.cmd('set background &')
   vim.cmd('hi Normal guifg=#44cc44 guibg=NONE ctermbg=none')
   vim.cmd(':set listchars=tab:>-,trail:-')
+  vim.cmd([[ let g:clipboard = {
+    \"name": "lemonade",
+    \"copy":
+    \{
+    \    "+": "lemonade copy",
+    \    "*": "lemonade copy"
+    \},
+    \"paste":
+    \{
+    \    "+": "lemonade paste",
+    \    "*": "paste"
+    \},
+    \"cache_enabled": 1
+  \} ]])
 end)
 
 vim.cmd('set whichwrap+=<,>,[,],h,l')
