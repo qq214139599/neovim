@@ -10,6 +10,13 @@ git clone https://github.com/kodeclan/phpfmt.git /usr/local/phpfmt
 git clone https://github.com/phpactor/phpactor.git /usr/local/phpactor
 git clone https://github.com/LuaLS/lua-language-server /usr/local/lua-language-server
 git clone https://github.com/neovim/neovim.git /usr/local/neovim
+git clone https://github.com/lemonade-command/lemonade.git
+/home/cccc/.config/lemonade.toml
+port = 2489
+host = '192.168.56.1'
+trans-loopback = true
+trans-localfile = true
+line-ending = 'cr'
 
 # c 依赖文件
 
