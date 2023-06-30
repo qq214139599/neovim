@@ -1,5 +1,6 @@
 require('core.global')
 require('core.utils')
+require('core.run')
 require('core.options')
 require('core.autocmds')
 require('core.mappings').init()
