@@ -25,6 +25,11 @@ local install_lsp = function(lspconfig)
         opts = skcode.merge(default_opts, require('core.lsp.providers.lua_ls'))
       elseif server == 'jsonls' then
         opts = skcode.merge(default_opts, require('core.lsp.providers.jsonls'))
+      elseif server == 'jstls' then
+        opts = skcode.merge(default_opts, {
+          cmd = { 'jdtls' },
+          filetypes = { 'java' },
+      })
       elseif server == 'clangd' then
         opts = skcode.merge(default_opts, {
             capabilities = { offsetEncoding = "utf-8" },

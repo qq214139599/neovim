@@ -26,6 +26,7 @@ M.lsp = {
     volar = false,         -- vue3
     rust_analyzer = false, -- rust
     vuels = false,         -- vue2
+    jdtls = true,
   },
 }
 
