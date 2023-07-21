@@ -28,6 +28,7 @@ local install_lsp = function(lspconfig)
       elseif server == 'jstls' then
         opts = skcode.merge(default_opts, {
           cmd = { 'jdtls' },
+          root_dir = lspconfig.util.root_pattern('pom.xml', 'gradle.build', '.git'),
           filetypes = { 'java' },
       })
       elseif server == 'clangd' then

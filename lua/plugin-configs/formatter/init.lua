@@ -29,6 +29,13 @@ if present then
     }
   end
 
+  local javapretty = function()
+    return {
+      exe = '/usr/bin/java',
+      args = { '-jar', '/usr/local/google-java-format-1.17.0-all-deps.jar', vim.fn.shellescape(vim.api.nvim_buf_get_name(0)) },
+    }
+  end
+
   local pypretty = function()
     return {
       exe = 'yapf',
@@ -58,6 +65,7 @@ if present then
       jsonc = { prettier },
       go = { gopretty },
       php = { phppretty },
+      java = { javapretty },
       py = { pypretty },
       python = {
         require('formatter.filetypes.python').yapf,

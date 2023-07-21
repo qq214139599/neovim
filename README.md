@@ -18,6 +18,8 @@ trans-loopback = true
 trans-localfile = true
 line-ending = 'cr'
 
+cd /usr/local/ && wget 'https://github.com/google/google-java-format/releases/download/v1.17.0/google-java-format-1.17.0-all-deps.jar'
+
 # c 依赖文件
 
 compiledb -nf make
