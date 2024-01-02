@@ -51,7 +51,7 @@ opt.shortmess:append('c')
 vim.schedule(function()
   vim.opt.shadafile = vim.fn.expand('$HOME') .. '/.local/share/nvim/shada/main.shada'
   vim.cmd([[ silent! rsh ]])
-  vim.cmd('colorscheme slate')
+  vim.cmd('colorscheme industry')
   vim.cmd('set background &')
   vim.cmd('hi Normal guifg=#44cc44 guibg=NONE ctermbg=none')
   vim.cmd(':set listchars=tab:>-,trail:-')
