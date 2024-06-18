@@ -4,7 +4,7 @@ local opt = vim.opt
 -- :help options
 g.mapleader = ' '
 g.skcode_theme = skcode.load_config().ui.theme
-
+g.skip_ts_context_commentstring_module = true
 -- 更多配置可以查看文档: https://yianwillis.github.io/vimcdoc/doc/quickref.html#option-list
 opt.backup = false -- 覆盖文件时保留备份文件
 opt.clipboard = 'unnamedplus' -- 允许nvim访问系统剪切板

@@ -41,7 +41,6 @@ if present then
     vim.keymap.set('n', '<Tab>', api.node.open.preview, opts('Open Preview'))
   end
 
-
   nvimtree.setup({
     on_attach = on_attach,
     disable_netrw = true,
@@ -55,7 +54,7 @@ if present then
     },
     view = {
       width = 30,
-      hide_root_folder = false,
+      -- hide_root_folder = false,
       side = 'left',
       adaptive_size = true,
       number = false,
