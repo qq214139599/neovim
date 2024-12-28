@@ -1,14 +1,28 @@
 local function setupLspSymbol()
-  local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
-
-  local function lspSymbol(name, icon)
-    local hl = 'DiagnosticSign' .. name
-    vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
-  end
-
-  for type, icon in pairs(signs) do
-    lspSymbol(type, icon)
-  end
+  vim.diagnostic.config({
+    virtual_text = {
+      prefix = '●', -- 可以是 '●', '▎', 或者其他符号
+    },
+    signs = {
+      active = {
+        { name = 'DiagnosticSignError', text = '✗' },
+        { name = 'DiagnosticSignWarn', text = '!' },
+        { name = 'DiagnosticSignHint', text = '?' },
+        { name = 'DiagnosticSignInfo', text = 'i' },
+      },
+    },
+    update_in_insert = false,
+    underline = true,
+    severity_sort = true,
+    float = {
+      focusable = false,
+      style = 'minimal',
+      border = 'rounded',
+      source = 'always',
+      header = '',
+      prefix = '',
+    },
+  })
 end
 
 local function setupLspDiagnostic()

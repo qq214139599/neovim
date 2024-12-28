@@ -5,7 +5,7 @@ vim.api.nvim_create_autocmd('FileType', {
       0,
       'n',
       '<F5>',
-      ':w<CR>:split<CR>:te /usr/local/bin/php %<CR>i',
+      ':w<CR>:split<CR>:te /opt/homebrew/bin/php %<CR>i',
       { silent = true, noremap = true }
     )
   end,

@@ -23,8 +23,14 @@ if present then
 
   local phppretty = function()
     return {
-      exe = '/usr/local/phpfmt/fmt.phar',
-      args = { '--psr2', '--indent_with_space=4', '-o=-', vim.fn.shellescape(vim.api.nvim_buf_get_name(0)) },
+      exe = '/opt/local/bin/php71',
+      args = {
+        '/usr/local/phpfmt/fmt.phar',
+        '--psr2',
+        '--indent_with_space=4',
+        '-o=-',
+        vim.fn.shellescape(vim.api.nvim_buf_get_name(0)),
+      },
       stdin = true,
     }
   end
@@ -32,7 +38,11 @@ if present then
   local javapretty = function()
     return {
       exe = '/usr/bin/java',
-      args = { '-jar', '/usr/local/google-java-format-1.17.0-all-deps.jar', vim.fn.shellescape(vim.api.nvim_buf_get_name(0)) },
+      args = {
+        '-jar',
+        '/usr/local/google-java-format-1.17.0-all-deps.jar',
+        vim.fn.shellescape(vim.api.nvim_buf_get_name(0)),
+      },
     }
   end
 
