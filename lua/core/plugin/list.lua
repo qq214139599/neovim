@@ -117,6 +117,12 @@ require('lazy').setup({
     config = function()
       require('plugin-configs.luasnip')
     end,
+    -- install jsregexp (optional!).
+    build = 'make install_jsregexp',
+    --dependencies = {
+    -- 添加 luasnip-jsregexp 作为依赖
+    --{ 'https://github.com/BurntSushi/luasnip-jsregexp.nvim' },
+    --},
   },
 
   -- 自动完成
