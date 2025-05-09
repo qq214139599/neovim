@@ -17,6 +17,8 @@ local install_lsp = function(lspconfig)
     if enable then
       if server == 'tsserver' then
         opts = skcode.merge(default_opts, require('core.lsp.providers.tsserver'))
+      elseif server == 'ts_ls' then
+        opts = skcode.merge(default_opts, require('core.lsp.providers.ts_ls'))
       elseif server == 'tailwindcss' then
         opts = skcode.merge(default_opts, require('core.lsp.providers.tailwindcss'))
       elseif server == 'volar' then

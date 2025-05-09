@@ -8,7 +8,8 @@ M.ui = {
 -- Lsp 配置
 M.lsp = {
   servers = {
-    tsserver = true, -- typescript
+    --    tsserver = true, -- typescript --deprecated
+    ts_ls = true, -- typescript
     cssls = true, -- css
     cssmodules_ls = true, -- css module
     jsonls = true, -- json
