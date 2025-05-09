@@ -1,12 +1,22 @@
 local config = require('core.plugin.config')
 
 require('lazy').setup({
-  { 'nvim-lua/plenary.nvim', lazy = true },
-  { 'b0o/schemastore.nvim', lazy = true },
-  { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' },
-  { 'nvim-tree/nvim-web-devicons', lazy = true },
-
-  ------------------------------ UI ----------------------------------
+  {
+    'nvim-lua/plenary.nvim',
+    lazy = true,
+  },
+  {
+    'b0o/schemastore.nvim',
+    lazy = true,
+  },
+  {
+    'weilbith/nvim-code-action-menu',
+    cmd = 'CodeActionMenu',
+  },
+  {
+    'nvim-tree/nvim-web-devicons',
+    lazy = true,
+  }, ------------------------------ UI ----------------------------------
   {
     'itsuki0927/base46',
     config = function()
@@ -16,7 +26,6 @@ require('lazy').setup({
       end
     end,
   },
-
   {
     'NvChad/nvim-colorizer.lua',
     event = { 'CursorHold' },
@@ -24,7 +33,6 @@ require('lazy').setup({
       require('plugin-configs.colorizer')
     end,
   },
-
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
     event = 'BufRead',
@@ -37,7 +45,6 @@ require('lazy').setup({
       require('plugin-configs.treesitter')
     end,
   },
-
   {
     'akinsho/bufferline.nvim',
     event = { 'BufNewFile', 'BufRead', 'TabEnter' },
@@ -48,7 +55,6 @@ require('lazy').setup({
       require('core.mappings').bufferline()
     end,
   },
-
   {
     'goolord/alpha-nvim',
     event = 'VimEnter',
@@ -56,7 +62,6 @@ require('lazy').setup({
       require('plugin-configs.alpha')
     end,
   },
-
   {
     'lewis6991/gitsigns.nvim',
     event = 'BufRead',
@@ -64,7 +69,13 @@ require('lazy').setup({
       require('plugin-configs.gitsigns')
     end,
   },
-
+  {
+    'feline-nvim/feline.nvim',
+    event = 'BufRead',
+    config = function()
+      require('feline').setup()
+    end,
+  },
   {
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
@@ -73,7 +84,6 @@ require('lazy').setup({
       require('plugin-configs.blankline')
     end,
   },
-
   {
     'folke/todo-comments.nvim',
     event = 'BufRead',
@@ -84,12 +94,8 @@ require('lazy').setup({
     init = function()
       require('core.mappings').todo_comments()
     end,
-  },
-
-  ------------------------------ UI ----------------------------------
-
+  }, ------------------------------ UI ----------------------------------
   ------------------------------ 功能组件 ----------------------------------
-
   -- 目录树
   {
     'kyazdani42/nvim-tree.lua',
@@ -100,17 +106,13 @@ require('lazy').setup({
     init = function()
       require('core.mappings').nvimtree()
     end,
-  },
-
-  -- lsp
+  }, -- lsp
   {
     'neovim/nvim-lspconfig',
     config = function()
       require('core.lsp')
     end,
-  },
-
-  -- 片段
+  }, -- 片段
   {
     'L3MON4D3/LuaSnip',
     event = 'InsertEnter',
@@ -119,13 +121,11 @@ require('lazy').setup({
     end,
     -- install jsregexp (optional!).
     build = 'make install_jsregexp',
-    --dependencies = {
+    -- dependencies = {
     -- 添加 luasnip-jsregexp 作为依赖
-    --{ 'https://github.com/BurntSushi/luasnip-jsregexp.nvim' },
-    --},
-  },
-
-  -- 自动完成
+    -- { 'https://github.com/BurntSushi/luasnip-jsregexp.nvim' },
+    -- },
+  }, -- 自动完成
   {
     'hrsh7th/nvim-cmp',
     event = 'VeryLazy',
@@ -140,9 +140,7 @@ require('lazy').setup({
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
     },
-  },
-
-  -- 自动补全括号
+  }, -- 自动补全括号
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
@@ -150,9 +148,7 @@ require('lazy').setup({
     config = function()
       require('plugin-configs.autopairs')
     end,
-  },
-
-  -- 自动关闭标签
+  }, -- 自动关闭标签
   {
     'windwp/nvim-ts-autotag',
     event = 'InsertEnter',
@@ -160,32 +156,25 @@ require('lazy').setup({
     opts = {
       filetypes = { 'javascriptreact', 'typescriptreact', 'html', 'vue', 'tsx', 'jsx' },
     },
-  },
-
-  -- 格式化
+  }, -- 格式化
   {
     'mhartington/formatter.nvim',
     event = 'BufWrite',
     config = function()
       require('plugin-configs.formatter')
     end,
-  },
-
-  -- 注释
+  }, -- 注释
   {
     'numToStr/Comment.nvim',
     event = 'VeryLazy',
-    dependencies = {
-      'JoosepAlviste/nvim-ts-context-commentstring',
-    },
+    dependencies = { 'JoosepAlviste/nvim-ts-context-commentstring' },
     config = function()
       require('plugin-configs.comment')
     end,
     init = function()
       require('core.mappings').comment()
     end,
-  },
-  -- 输入提示函数参数
+  }, -- 输入提示函数参数
   {
     'ray-x/lsp_signature.nvim',
     event = 'VeryLazy',
@@ -207,9 +196,7 @@ require('lazy').setup({
       zindex = 200,
       padding = '',
     },
-  },
-
-  -- 几个文件之间快速跳转
+  }, -- 几个文件之间快速跳转
   {
     'ThePrimeagen/harpoon',
     event = 'VeryLazy',
@@ -219,9 +206,7 @@ require('lazy').setup({
     init = function()
       require('core.mappings').harpoon()
     end,
-  },
-
-  -- 模糊搜索
+  }, -- 模糊搜索
   {
     'nvim-telescope/telescope.nvim',
     cmd = 'Telescope',
@@ -231,33 +216,18 @@ require('lazy').setup({
     init = function()
       require('core.mappings').telescope()
     end,
-  },
-
-  --
+  }, --
   {
     'kylechui/nvim-surround',
     event = 'VeryLazy',
     config = true,
-  },
-
-  -- Markdown 预览
+  }, -- Markdown 预览
   {
     'iamcco/markdown-preview.nvim',
     ft = 'markdown',
-    keys = {
-      {
-        '<leader>mp',
-        ':MarkdownPreview <CR>',
-      },
-      {
-        '<leader>ms',
-        ':MarkdownPreviewStop <CR>',
-      },
-    },
+    keys = { { '<leader>mp', ':MarkdownPreview <CR>' }, { '<leader>ms', ':MarkdownPreviewStop <CR>' } },
     build = ':call mkdp#util#install()',
-  },
-
-  -- 快速跳转
+  }, -- 快速跳转
   {
     'phaazon/hop.nvim',
     keys = {
@@ -304,17 +274,15 @@ require('lazy').setup({
       require('core.mappings').hop()
     end,
     config = function()
-      require('hop').setup({ keys = 'etovxqpdygfblzhckisuran' })
+      require('hop').setup({
+        keys = 'etovxqpdygfblzhckisuran',
+      })
     end,
-  },
-
-  -- 多光标
+  }, -- 多光标
   {
     'mg979/vim-visual-multi',
     event = 'VeryLazy',
-  },
-
-  -- 浮窗
+  }, -- 浮窗
   {
     'voldikss/vim-floaterm',
     cmd = { 'FloatermNew', 'FloatermToggle' },
@@ -324,9 +292,7 @@ require('lazy').setup({
     init = function()
       require('core.mappings').floaterm()
     end,
-  },
-
-  -- 不错的替换功能
+  }, -- 不错的替换功能
   -- {
   --   'cshuaimin/ssr.nvim',
   --   keys = {
@@ -343,7 +309,6 @@ require('lazy').setup({
   --     border = 'single',
   --   },
   -- },
-
   --  ['simrat39/symbols-outline.nvim'] = {
   --    cmd = {
   --      'SymbolsOutline',
@@ -354,7 +319,6 @@ require('lazy').setup({
   --      require('symbols-outline').setup()
   --    end,
   --  },
-
   -- Git Diff
   -- {
   --   'sindrets/diffview.nvim',
@@ -365,6 +329,5 @@ require('lazy').setup({
   --   },
   --   cmd = { 'DiffviewOpen', 'DiffviewClose' },
   -- },
-
   ------------------------------ 功能组件 ----------------------------------
 }, config)
