@@ -48,6 +48,15 @@ opt.listchars = 'space:⋅'
 
 opt.shortmess:append('c')
 
+-- 启用视觉折行
+opt.wrap = true
+-- 禁止在单词中间折行
+opt.linebreak = true
+-- 折行时保留缩进
+opt.breakindent = true
+-- 可选：折行处显示箭头（需支持特殊字符的字体）
+opt.showbreak = '↪ '
+
 vim.schedule(function()
   vim.opt.shadafile = vim.fn.expand('$HOME') .. '/.local/share/nvim/shada/main.shada'
   vim.cmd([[ silent! rsh ]])
