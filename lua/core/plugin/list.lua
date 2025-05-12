@@ -292,42 +292,5 @@ require('lazy').setup({
     init = function()
       require('core.mappings').floaterm()
     end,
-  }, -- 不错的替换功能
-  -- {
-  --   'cshuaimin/ssr.nvim',
-  --   keys = {
-  --     {
-  --       '<leader>sr',
-  --       function()
-  --         require('ssr').open()
-  --       end,
-  --       mode = { 'n', 'x' },
-  --       desc = 'Structural Replace',
-  --     },
-  --   },
-  --   opts = {
-  --     border = 'single',
-  --   },
-  -- },
-  --  ['simrat39/symbols-outline.nvim'] = {
-  --    cmd = {
-  --      'SymbolsOutline',
-  --      'SymbolsOutlineOpen',
-  --      'SymbolsOutlineClose',
-  --    },
-  --    config = function()
-  --      require('symbols-outline').setup()
-  --    end,
-  --  },
-  -- Git Diff
-  -- {
-  --   'sindrets/diffview.nvim',
-  --   keys = {
-  --     { '<leader>dv', ':DiffviewOpen<CR>' },
-  --     { '<leader>dc', ':DiffviewClose<CR>' },
-  --     { '<leader>dq', ':DiffviewClose<CR>:q<CR>' },
-  --   },
-  --   cmd = { 'DiffviewOpen', 'DiffviewClose' },
-  -- },
-  ------------------------------ 功能组件 ----------------------------------
+  }, ------------------------------ 功能组件 ----------------------------------
 }, config)
