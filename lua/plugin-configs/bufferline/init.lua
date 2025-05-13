@@ -1,29 +1,33 @@
 local present, configs = pcall(require, 'bufferline')
 
 if present then
-  require('base46').load_highlight('bufferline')
-  configs.setup({
-    options = {
-      buffer_close_icon = '',
-      modified_icon = '',
-      close_icon = '',
-      left_trunc_marker = '',
-      right_trunc_marker = '',
-      max_name_length = 14,
-      max_prefix_length = 13,
-      tab_size = 20,
-      diagnostics = false,
-      offsets = { { filetype = 'NvimTree', text = '', padding = 0 } },
-      show_buffer_icons = true,
-      show_buffer_close_icons = false,
-      show_close_icon = false,
-      show_tab_indicators = true,
-      persist_buffer_sort = true,
-      separator_style = 'none',
-      enforce_regular_tabs = true,
-      always_show_bufferline = true,
-    },
-  })
+    require('base46').load_highlight('bufferline')
+    configs.setup({
+        options = {
+            buffer_close_icon = '',
+            modified_icon = '',
+            close_icon = '',
+            left_trunc_marker = '',
+            right_trunc_marker = '',
+            tab_size = 20,
+            max_name_length = 50,
+            max_prefix_length = 30,
+            diagnostics = false,
+            offsets = {{
+                filetype = 'NvimTree',
+                text = '',
+                padding = 0
+            }},
+            show_buffer_icons = false,
+            show_buffer_close_icons = false,
+            show_close_icon = false,
+            show_tab_indicators = false,
+            persist_buffer_sort = true,
+            separator_style = 'none',
+            enforce_regular_tabs = false,
+            always_show_bufferline = false,
+        }
+    })
 end
 
 vim.cmd [[
