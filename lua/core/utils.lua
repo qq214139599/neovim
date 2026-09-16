@@ -30,6 +30,21 @@ skcode.merge = function(...)
   return vim.tbl_deep_extend('force', ...)
 end
 
+-- 跳转到上一条(count=-1)/下一条(count=1)诊断，并在光标处弹出浮窗
+skcode.jump_diagnostic = function(count)
+  vim.diagnostic.jump({
+    count = count,
+    on_jump = function(_, bufnr)
+      vim.diagnostic.open_float({
+        bufnr = bufnr,
+        scope = 'cursor',
+        focus = false,
+        border = 'single',
+      })
+    end,
+  })
+end
+
 skcode.close_buffer = function()
   local fn = vim.fn
 

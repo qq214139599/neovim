@@ -14,16 +14,12 @@ local function lsp_highlight_document(client)
 end
 
 local on_attach = function(client, bufnr)
-  local function buf_set_option(...)
-    vim.api.nvim_buf_set_option(bufnr, ...)
-  end
-
   -- 添加lsp文档高亮
   lsp_highlight_document(client)
   -- 添加lsp键位
   require('core.mappings').lspconfig(bufnr)
   -- 使用<c-x><c-o>触发Lsp
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
   require('lsp_signature').on_attach()
 end
 

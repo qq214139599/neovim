@@ -82,4 +82,7 @@ end)
 
 vim.cmd('set whichwrap+=<,>,[,],h,l')
 vim.cmd([[set iskeyword+=-]])
-vim.cmd([[let g:perl_host_prog = '/usr/bin/perl']])
+-- 系统自带的 perl(5.34)/ruby(2.6) 不带编译头文件，无法编译 Neovim::Ext / msgpack，
+-- 因此使用 homebrew 安装的解释器与 gem。
+vim.g.perl_host_prog = '/opt/homebrew/opt/perl/bin/perl'
+vim.g.ruby_host_prog = '/opt/homebrew/lib/ruby/gems/4.0.0/bin/neovim-ruby-host'

@@ -111,7 +111,7 @@ M.LSP_progress = function()
   local percentage = Lsp.percentage or 0
   local title = Lsp.title or ''
   local spinners = { '', '' }
-  local ms = vim.loop.hrtime() / 1000000
+  local ms = vim.uv.hrtime() / 1000000
   local frame = math.floor(ms / 120) % #spinners
   local content = string.format(' %%<%s %s %s (%s%%%%) ', spinners[frame + 1], title, msg, percentage)
 
