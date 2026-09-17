@@ -1,16 +1,13 @@
-local present, lsp_config = pcall(require, 'lspconfig')
-
-if not present then
-  return
-end
-
 local lsp_default_config = skcode.load_config().lsp
 
 local default_opts = require('core.lsp.opts')
 
 local servers = lsp_default_config.servers
 
-local install_lsp = function(lspconfig)
+-- nvim 0.11+ 的 vim.lsp.config 会把 nvim-lspconfig 的 lsp/<server>.lua 一起合并进来
+-- （优先级：vim.lsp.config('*') < lsp/<server>.lua < 这里的调用），
+-- 所以不再需要 require('lspconfig')[server].setup()，那个框架已被上游废弃。
+local install_lsp = function()
   local opts
 
   for server, enable in pairs(servers) do
@@ -27,23 +24,20 @@ local install_lsp = function(lspconfig)
         opts = skcode.merge(default_opts, require('core.lsp.providers.lua_ls'))
       elseif server == 'jsonls' then
         opts = skcode.merge(default_opts, require('core.lsp.providers.jsonls'))
-      elseif server == 'jstls' then
-        opts = skcode.merge(default_opts, {
-          cmd = { 'jdtls' },
-          root_dir = lspconfig.util.root_pattern('pom.xml', 'gradle.build', '.git'),
-          filetypes = { 'java' },
-      })
       elseif server == 'clangd' then
         opts = skcode.merge(default_opts, {
-            capabilities = { offsetEncoding = "utf-8" },
+          capabilities = { offsetEncoding = 'utf-8' },
         })
       else
+        -- 其余 server（cssls/html/eslint/gopls/pylsp/jdtls/phpactor...）
+        -- 的 cmd / filetypes / root_markers 由 nvim-lspconfig 的 lsp/<server>.lua 提供
         opts = default_opts
       end
 
-      lspconfig[server].setup(opts)
+      vim.lsp.config(server, opts)
+      vim.lsp.enable(server)
     end
   end
 end
 
-install_lsp(lsp_config)
+install_lsp()

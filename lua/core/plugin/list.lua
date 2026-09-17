@@ -292,5 +292,17 @@ require('lazy').setup({
     init = function()
       require('core.mappings').floaterm()
     end,
+  }, -- Claude Code
+  {
+    'coder/claudecode.nvim',
+    -- 启动即加载，WebSocket server 随之上线：
+    -- 这样在 nvim 之外的终端里直接跑 claude，也能通过 ~/.claude/ide/*.lock 连上来
+    event = 'VeryLazy',
+    config = function()
+      require('plugin-configs.claudecode')
+    end,
+    init = function()
+      require('core.mappings').claudecode()
+    end,
   }, ------------------------------ 功能组件 ----------------------------------
 }, config)

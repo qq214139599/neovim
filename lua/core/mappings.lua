@@ -151,6 +151,19 @@ M.hop = function()
   )
 end
 
+-- 注意：<leader>a 本身被 harpoon 占用，这里只用 <leader>a* 的二级键位
+M.claudecode = function()
+  map('n', '<leader>ac', '<cmd>ClaudeCode<CR>')
+  map('n', '<leader>af', '<cmd>ClaudeCodeFocus<CR>')
+  map('n', '<leader>ar', '<cmd>ClaudeCode --resume<CR>')
+  map('n', '<leader>aC', '<cmd>ClaudeCode --continue<CR>')
+  map('n', '<leader>am', '<cmd>ClaudeCodeSelectModel<CR>')
+  map('n', '<leader>ab', '<cmd>ClaudeCodeAdd %<CR>')
+  map('v', '<leader>as', '<cmd>ClaudeCodeSend<CR>')
+  map('n', '<leader>aa', '<cmd>ClaudeCodeDiffAccept<CR>')
+  map('n', '<leader>ad', '<cmd>ClaudeCodeDiffDeny<CR>')
+end
+
 M.harpoon = function()
   map('n', '<leader>a', "<cmd>lua require('harpoon.mark').add_file()<cr>")
   map('n', '<C-e>', "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>")
